@@ -1,7 +1,7 @@
 ---
 title: "index"
-author: "MWR"
-date: '2022-06-29'
+author: "Mateo W. Racca"
+date: "`r format(Sys.time(), '%d/%m/%y')`"
 output: html_document
 ---
 
@@ -15,18 +15,22 @@ AWS no tiene integraciones de R, por lo que muchas veces correr y/o automatizar 
 
 Este post intenta explicar una forma de automatizar scripts en AWS gracias a [Docker](https://docs.docker.com/get-docker/) y herramientas de AWS como Lambda, CloudWatch y ECR.
 
-No estoy seguro de que sea la mejor solución, pero es la manera que hace un tiempo nos permitió al equipo de MG automatizar reportes y realizar ETLs que con herramientas propias de AWS (como GLUE) no podíamos resolver.
+No estoy seguro de que sea la mejor solución, pero es la manera que hace un tiempo nos permitió al equipo de MG automatizar reportes y realizar ETLs que con herramientas propias de AWS (como GLUE) no podíamos resolver ya sea por falta de solidez o por costos.
 
 Antes de seguir quiero agradecer a Ezequiel Actis Groso porque gran parte de lo que intento explicar acá es el resultado de horas de su tiempo, paciencia y de su capacidad para resolver problemas.
 
 
-####Antes de empezar, ¿qué es Docker?
+###Antes de empezar, ¿qué es Docker?
 
-Como explica [@_ColinFay](https://twitter.com/_ColinFay) en su [introducción a Docker para usarixs de R](https://colinfay.me/docker-r-reproducibility/), Docker es un programa que realiza virtualizaciones de sistemas operativos que nos permite trabajar con diferentes OS a nivel local y también extrapolarlos para que evitemos el "en mi máquina funciona".
+Como explica [@_ColinFay](https://twitter.com/_ColinFay) en su [introducción a Docker para usarixs de R](https://colinfay.me/docker-r-reproducibility/), Docker es un programa que realiza virtualizaciones de sistemas operativos que nos permite trabajar con diferentes OS a nivel local y también extrapolarlos para que evitemos el conocido "en mi máquina funciona".
 
-Para poder trabajar vamos a necesitar una imagen que es la definición del sistema operativo y un container que es lo que nos permite ejecutar la instancia.
+Para poder trabajar con Docker vamos a necesitar una imagen, que es la definición del sistema operativo, y un container que es lo que nos permite ejecutar la instancia.
 
 
-####¿Es importante el script de este ejemplo? 
+###¿Qué vas a encontrar en este post? 
 
-No. Como es un ejemplo, el contenido del script no tiene otro fin más que mostrar cómo funciona la automatización. Vamos a usar un *.Rmd*
+Vas a encontrar un ejemplo de automatización de un reporte (hecho con *R markdown*) que toma datos de S3, transforma y procesa los datos, y genera el output visual que se almacena en S3.
+
+
+###
+
