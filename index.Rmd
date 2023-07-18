@@ -20,17 +20,25 @@ No estoy seguro de que sea la mejor solución, pero es la manera que hace un tie
 Antes de seguir quiero agradecer a Ezequiel Actis Groso porque gran parte de lo que intento explicar acá es el resultado de horas de su tiempo, paciencia y de su capacidad para resolver problemas.
 
 
-###Antes de empezar, ¿qué es Docker?
+##Antes de empezar, ¿qué es Docker?
 
 Como explica [@_ColinFay](https://twitter.com/_ColinFay) en su [introducción a Docker para usarixs de R](https://colinfay.me/docker-r-reproducibility/), Docker es un programa que realiza virtualizaciones de sistemas operativos que nos permite trabajar con diferentes OS a nivel local y también extrapolarlos para que evitemos el conocido "en mi máquina funciona".
 
 Para poder trabajar con Docker vamos a necesitar una imagen, que es la definición del sistema operativo, y un container que es lo que nos permite ejecutar la instancia.
 
 
-###¿Qué vas a encontrar en este post? 
+##¿Qué vas a encontrar en este post? 
 
 Vas a encontrar un ejemplo de automatización de un reporte (hecho con *R markdown*) que toma datos de S3, transforma y procesa los datos, y genera el output visual que se almacena en S3.
 
+
+#¿Qué necesitamos antes de empezar?
+
+Hay 4 cosas que son fundamentales:
+- Una cuenta de AWS e instalar (o tener acceso a traves de) la CLI.
+- Un script de R o Rmd para automatizar y los datos a utilizar almacenados en S3
+- Docker 
+- Ganas de intentarlo ;p
 
 ###
 
